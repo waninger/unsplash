@@ -1,45 +1,43 @@
+.searchbar-button:hover {
+  background-color: #c0c0c0;
+}
+
+.searchbar-button svg {
+  width: 1.4em;
+  height: 1.4em;
+  align-self: center;
+}
+.searchbar-button {
+  outline: transparent;
+  background-color: transparent;
+  display: inline-block;
+  border: transparent;
+  border-radius: 45%;
+}
+.searchbar-input {
+  height: 100%;
+  max-width: 70%;
+  font-size: 120%;
+  outline: transparent;
+  background-color: transparent;
+  padding-left: 3%;
+  padding-right: 3%;
+  border: rgba(63, 63, 63, 0.737) 2px solid;
+  border-radius: 30px;
+}
 @media only screen and (max-width: 768px) {
   .searchbar {
     justify-content: center;
     align-items: center;
     height: fit-content;
     width: fit-content;
-    margin:3%;
+    margin: 3%;
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.317);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
-  
-  .searchbar-input {
-    height: 100%;
-    max-width: 70%;
-    font-size: 120%;
-    outline: transparent;
-    background-color: transparent;
-    padding-left: 3%;
-    padding-right: 3%;
-    border: rgba(63, 63, 63, 0.737) 2px solid;
-    border-radius: 30px;
-  }
-  
-  .searchbar-button {
-    outline: transparent;
-    background-color: transparent;
-    display: inline-block;
-    border:transparent;
-    border-radius: 45%;
-  }
-  
-  .searchbar-button:hover {
-    background-color: #c0c0c0;
-  }
-  
-  .searchbar-button svg {
-    width: 1.4em;
-    height: 1.4em;
-    align-self: center;
-  }
 }
+
 @media only screen and (min-width: 768px) {
   .searchbar {
     justify-content: center;
@@ -50,47 +48,5 @@
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.317);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  .searchbar-input {
-    height: 100%;
-    max-width: 70%;
-    font-size: 120%;
-    outline: transparent;
-    background-color: transparent;
-    padding-left: 3%;
-    padding-right: 3%;
-    border: rgba(63, 63, 63, 0.737) 2px solid;
-    border-radius: 30px;
-  }
-  .searchbar-input {
-    float: center;
-    font-size: 120%;
-    outline:transparent;
-    max-width: 70%;
-    align-self: center;
-    padding-left: 3%;
-    padding-right: 3%;
-    background-color: transparent;
-    border: rgba(63, 63, 63, 0.737) 2px solid;
-    border-radius: 30px;
-  }
-  
-  .searchbar-button {
-    outline: transparent;
-    background-color: transparent;
-    display: inline-block;
-    border:transparent;
-    border-radius: 45%;
-  }
-  
-  .searchbar-button:hover {
-    background-color: #c0c0c0;
-  }
-  
-  .searchbar-button svg {
-    width: 1.4em;
-    height: 1.4em;
-    align-self: center;
   }
 }

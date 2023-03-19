@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef} from "react";
 import { ImageContext } from "../ImageContext";
 import "../styles/gallery.css";
 import GetImages from "./GetImages";
@@ -12,8 +12,15 @@ import GetImages from "./GetImages";
 
 function Gallery() {
   //global varables
-  const { imageUrls, pageNumber, setPageNumber, hasMoreData, isLoading } =
-    useContext(ImageContext);
+  const {
+    imageUrls,
+    pageNumber,
+    setPageNumber,
+    hasMoreData,
+    isLoading,
+    setOpenModal,
+    setModalImageUrl,
+  } = useContext(ImageContext);
 
   //refrence to last image in Array
   const imageRef = useRef<HTMLImageElement>(null);
@@ -35,6 +42,12 @@ function Gallery() {
     };
   }, [imageRef, isLoading]);
 
+  function handleClick(event: React.MouseEvent<HTMLImageElement, MouseEvent>) {
+    const imageSrc = event.currentTarget.src;
+    setModalImageUrl(imageSrc);
+    setOpenModal(true);
+  }
+
   return (
     <>
       <div className="gallery">
@@ -44,14 +57,14 @@ function Gallery() {
             return (
               <img
                 ref={imageRef}
-                className="galler img"
                 key={index}
                 src={image}
                 alt=""
+                onClick={handleClick}
               />
             );
           }
-          return <img className="galler img" key={index} src={image} alt="" />;
+          return <img key={index} src={image} alt="" onClick={handleClick} />;
         })}
       </div>
       <GetImages />

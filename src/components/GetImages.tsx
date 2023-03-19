@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ImageContext } from "../ImageContext";
+import "../styles/Information.css";
 
 /**
  * takes a searchQery and loads a list of urls based on the
@@ -15,6 +16,7 @@ function GetImages() {
     queryString,
     hasMoreData,
     setHasMoreData,
+    isLoading,
     setIsLoading,
   } = useContext(ImageContext);
 
@@ -22,7 +24,6 @@ function GetImages() {
   const endpoint: string = "https://api.unsplash.com/search/photos";
   const privateKey: string = "ZVT8vLK5avNC3fkDyHgaQEV77PjpEtISUhhCUxfcdow";
   const imagesPerPage: number = 30;
-  let responseUrls: string[] = [];
 
   //config for axios call
   let config = {
@@ -36,11 +37,10 @@ function GetImages() {
 
   useEffect(() => {
     setIsLoading(true);
-
-    console.log("sending data" + pageNumber);
     axios
       .get(endpoint, config)
       .then((resp) => {
+        let responseUrls: string[] = [];
         responseUrls = imageUrls;
 
         //itterate over response data and save basic urls
@@ -52,7 +52,6 @@ function GetImages() {
         //check if this was the last page
         if (pageNumber < resp.data.total_pages) {
           setHasMoreData(true);
-          console.log("has more data");
         } else setHasMoreData(false);
         setIsLoading(false);
       })
@@ -62,7 +61,13 @@ function GetImages() {
       });
   }, [pageNumber, queryString]);
 
-  if (hasMoreData) return <div>Loading images...</div>;
+  //Loading info
+  if (isLoading || hasMoreData)
+    return <div className="info-text">Loading images...</div>;
+  //No image Found
+  if (queryString !== "" && imageUrls.length === 0)
+    return <div className="info-text">No image Found</div>;
+  //no info needed
   return <div></div>;
 }
 

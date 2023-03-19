@@ -2,6 +2,7 @@ import { useState } from "react";
 import Gallery from "./components/Gallery";
 import { ImageContext } from "./ImageContext";
 import Navbar from "./components/Navbar";
+import ModalWindow from "./components/ModalWindow";
 
 function App() {
   //global variables
@@ -10,6 +11,10 @@ function App() {
   const [queryString, setQueryString] = useState("");
   const [hasMoreData, setHasMoreData] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState("");
+
+  //modal
 
   return (
     <>
@@ -25,9 +30,14 @@ function App() {
           setHasMoreData,
           isLoading,
           setIsLoading,
+          openModal,
+          setOpenModal,
+          modalImageUrl,
+          setModalImageUrl,
         }}
       >
         <Navbar />
+        <ModalWindow />
         <Gallery />
       </ImageContext.Provider>
     </>
