@@ -1,32 +1,49 @@
-import GetImages from './GetImages';
-import { useContext, useState } from 'react';
-import { ImageContext } from '../ImageContext';
+import { useContext, useState } from "react";
+import { ImageContext } from "../ImageContext";
+import "../styles/SearchBar.css";
+import { BsSearch } from "react-icons/bs";
 
+/**'
+ * Search bar. handles querystring and resets pagenumber on new query
+ */
 function SearchBar() {
-    const {imageUrls, setImageUrls, pageNumber, setPageNumber, queryString, setQueryString} = useContext(ImageContext);
-    
-    const[query, setQuery] = useState('');
+  //global variables
+  const { setImageUrls, setPageNumber, queryString, setQueryString } =
+    useContext(ImageContext);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
-      };
+  //peristance variable
+  const [query, setQuery] = useState("");
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(query)
-        //setPageNumber(1)
-        setQueryString(query); 
+  //set current querry string
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
+
+  //submit new string and reset page value
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (query !== queryString) {
+      setImageUrls([]);
+      setQueryString(query);
+      setPageNumber(1);
+      console.log("new query");
     }
+  };
 
-    return (
-        <div className='searchBar'>
-            <form onSubmit={onSubmit}>
-            <input name="searchInput" type = "text" onChange={handleChange} ></input>
-            <input id="inputQuery"type="submit" value="find user"></input>
-            </form>
-        </div>
-    );
+  return (
+    <div className="searchbar">
+      <form onSubmit={onSubmit}>
+        <input
+          className="searchbar-input"
+          type="text"
+          onChange={handleChange}
+        ></input>
+        <button className="searchbar-button" type="submit">
+          <BsSearch className="searchbar-icon" />
+        </button>
+      </form>
+    </div>
+  );
 }
-
 
 export default SearchBar;

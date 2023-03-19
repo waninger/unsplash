@@ -1,13 +1,32 @@
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+@media only screen and (max-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 13%;
+  }
 
-.gallery img {
-  margin: 10px;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  cursor: pointer;
+  .gallery img {
+    margin: 10px;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 45px;
+  }
+
+  .gallery img {
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+  }
 }

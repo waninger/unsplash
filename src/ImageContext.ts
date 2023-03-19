@@ -28,5 +28,4 @@ export const ImageContext = createContext<ImageContextInterface>({
   setHasMoreData: () => {},
   isLoading: false,
   setIsLoading: () => {}
-
 });

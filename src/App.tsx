@@ -5,6 +5,7 @@ import { useState } from "react";
 import Gallery from "./components/Gallery";
 import { ImageContext } from "./ImageContext";
 import GetImages from "./components/GetImages";
+import Navbar from "./components/Navbar";
 
 function App() {
 
@@ -22,9 +23,8 @@ function App() {
         queryString, setQueryString,
         hasMoreData, setHasMoreData,
         isLoading, setIsLoading}}>
-        <SearchBar />
+        <Navbar />
         <Gallery/>
-        <GetImages />
       </ImageContext.Provider>
     </>
   );
